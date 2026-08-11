@@ -45,7 +45,7 @@ function isH3SwallowedErrorBody(body: string): boolean {
 export default eventHandler(async (event) => {
   try {
     const handler = await getServerEntry();
-    const req = toRequest(event);
+    const req = toRequest(event as any);
     const response = await handler.fetch(req);
     return await normalizeCatastrophicSsrResponse(response);
   } catch (error) {
